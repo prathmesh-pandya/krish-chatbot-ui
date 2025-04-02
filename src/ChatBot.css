@@ -39,7 +39,8 @@
   position: absolute;
   bottom: 80px;
   right: 0;
-  height: 600px;
+  height: 675px;
+  width: 500px;
   border-radius: 12px;
   background-color: white;
   overflow: hidden;
@@ -106,7 +107,6 @@
 }
 
 .message {
-  max-width: 85%;
   padding: 20px;
   border-radius: 5px;
   word-break: break-word;
