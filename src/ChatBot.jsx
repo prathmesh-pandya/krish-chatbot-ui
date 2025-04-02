@@ -76,13 +76,16 @@ const ChatBot = () => {
 
     try {
       // Send message to backend
-      const response = await fetch(import.meta.env.VITE_API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: inputMessage }),
-      });
+      const response = await fetch(
+        "https://krish-chatbot-api-abrt.vercel.app/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: inputMessage }),
+        }
+      );
 
       const data = await response.json();
 
