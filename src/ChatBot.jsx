@@ -46,8 +46,18 @@ const ChatBot = () => {
 
   // Function to process the API response and enhance links
   const processResponse = (responseHtml) => {
+    // Remove any raw HTML backticks and tags
+    let cleanedHtml = responseHtml;
+
+    // Remove ```html and ``` tags that might be in the response
+    cleanedHtml = cleanedHtml.replace(/```html/g, "");
+    cleanedHtml = cleanedHtml.replace(/```/g, "");
+
+    // Also remove any <userStyle> tags or other unwanted tags
+    cleanedHtml = cleanedHtml.replace(/<userStyle>.*?<\/userStyle>/g, "");
+
     const parser = new DOMParser();
-    const doc = parser.parseFromString(responseHtml, "text/html");
+    const doc = parser.parseFromString(cleanedHtml, "text/html");
 
     // Find all links and enhance them
     const links = doc.querySelectorAll("a");
